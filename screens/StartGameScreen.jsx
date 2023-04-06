@@ -9,11 +9,12 @@ export const StartGameScreen = () =>{
                 <View style= { styles.mini}>
                     <Text>Select a Number</Text>
                     <TextInput style= {styles.textInput}></TextInput>
+                    <View style = {styles.buttons}>
+                        <Button title="Reset" onPress={() =>{}}></Button>
+                        <Button  title="Confirm" onPress={() =>{}}></Button>
+                    </View>
                 </View>
-                <View style = {styles.buttons}>
-                    <Button title="Reset" onPress={() =>{}}></Button>
-                    <Button  title="Confirm" onPress={() =>{}}></Button>
-                </View>
+               
             </View>
         </>
     )
@@ -30,8 +31,18 @@ const styles = StyleSheet.create({
     },
     mini: {
         width: '90%',
-        borderRadius: 1,
-        alignItems: 'center'
+        borderRadius: 4,
+        padding: 9,
+        alignItems: 'center',
+        shadowColor: 'black',
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowRadius: 6,
+        shadowOpacity: .26,
+        backgroundColor: 'white',
+        elevation: 8
     },
     textInput:{
         width: '100%',
