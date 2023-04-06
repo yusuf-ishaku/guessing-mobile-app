@@ -1,20 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
+import { Header } from './components/Header';
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start wrking on your app!</Text>
-      <StatusBar style="auto" />
+    <View style = {styles.mainView}>
+      <Header title = "Guesser App"></Header>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  mainView: {
+    flex: 1
+  }
+})
