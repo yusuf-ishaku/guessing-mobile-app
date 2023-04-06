@@ -11,8 +11,8 @@ export const StartGameScreen = () =>{
                     <Text>Select a Number</Text>
                     <TextInput style= {styles.textInput}></TextInput>
                     <View style = {styles.buttons}>
-                        <Button title="Reset" onPress={() =>{}}></Button>
-                        <Button  title="Confirm" onPress={() =>{}}></Button>
+                        <View style= {styles.button}><Button title="Reset" onPress={() =>{}} color="#c717fc"></Button></View>
+                        <View style = {styles.button}><Button  title="Confirm" onPress={() =>{}} color="#f7287b"></Button></View>
                     </View>
                 </Card>
             </View>
