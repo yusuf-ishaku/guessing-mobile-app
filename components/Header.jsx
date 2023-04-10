@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Button, Text, StyleSheet } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-
+import colors from "../constants/colors";
 export const Header = (props) =>{
     return(
         <>
@@ -15,7 +14,7 @@ const styles = StyleSheet.create({
     header: {
         width: "100%",
         height: 90,
-        backgroundColor: Colors.accent,
+        backgroundColor: colors.primary,
         paddingHorizontal: 10,
         paddingTop: 35,
         // flex: 1,
