@@ -6,9 +6,34 @@ import Input from "../components/Input";
 // import { useState } from "react";
 export const StartGameScreen = () =>{
     const[ivalue, setIvalue] = useState("");
+    const[confirmed, setConfirmed] = useState(false);
+    const[selectedNumber, setSelectedNumber] = useState("");
+    // const[confirmedOutput, setConfirmedOutput] = useState("")
     const setInputValue = (prop) =>{
         setIvalue(prop.replace(/[^0-9]/g, ""));
+        
     }
+    const resetInputHandler = () =>{
+        setIvalue(""); 
+        setConfirmed(false);
+        setConfirmedOutput("");
+    }
+    const confirmInputHandler = () =>{
+        let confirmValue = parseInt(ivalue);
+        // console.log("mel");
+        if(confirmValue === NaN || confirmValue > 99 || confirmValue <= 0){
+            return;
+        }
+       
+        setConfirmed(true);
+        setIvalue("");
+        setSelectedNumber(confirmValue);
+    }
+    let confirmedOutput;
+    if(confirmed){
+        confirmedOutput = <Text>Selected Number: {selectedNumber}</Text>
+    }
+   
     return (
         <>
         <TouchableWithoutFeedback onPress={() =>{
@@ -28,10 +53,11 @@ export const StartGameScreen = () =>{
                     value={ivalue}>
                     </Input>
                     <View style = {styles.buttons}>
-                        <View style= {styles.button}><Button title="Reset" onPress={() =>{}} color={Colors.accent}></Button></View>
-                        <View style = {styles.button}><Button  title="Confirm" onPress={() =>{}} color={Colors.primary}></Button></View>
+                        <View style= {styles.button}><Button title="Reset" onPress={() =>{resetInputHandler()}} color={Colors.accent}></Button></View>
+                        <View style = {styles.button}><Button  title="Confirm" onPress={() =>{confirmInputHandler()}} color={Colors.primary}></Button></View>
                     </View>
                 </Card>
+                {confirmedOutput}
             </View>
         </TouchableWithoutFeedback>
         </>
