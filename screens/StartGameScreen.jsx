@@ -43,7 +43,7 @@ export const StartGameScreen = () =>{
         <View style={styles.ahead}>
             <Text>Selected Number:</Text>
             <View style= {styles.number}><Text style={styles.selec}>{selectedNumber}</Text></View>
-            <Button style = {styles.button} color={colors.primary} title="Start Game"></Button>
+            <Button style = {styles.button} color={colors.accent} title="Start Game"></Button>
         </View>
         );
     }
