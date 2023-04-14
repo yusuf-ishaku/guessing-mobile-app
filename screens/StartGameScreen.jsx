@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import { TextInput, View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard} from "react-native";
+import { TextInput, View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard, Alert} from "react-native";
 import { Card } from "../components/Card";
 import Colors from "../constants/colors";
 import Input from "../components/Input";
+import colors from "../constants/colors";
 // import { useState } from "react";
 export const StartGameScreen = () =>{
     const[ivalue, setIvalue] = useState("");
@@ -16,22 +17,35 @@ export const StartGameScreen = () =>{
     const resetInputHandler = () =>{
         setIvalue(""); 
         setConfirmed(false);
-        setConfirmedOutput("");
+        // setConfirmedOutput("");
     }
     const confirmInputHandler = () =>{
         let confirmValue = parseInt(ivalue);
+        // console.log(confirmValue)
         // console.log("mel");
-        if(confirmValue === NaN || confirmValue > 99 || confirmValue <= 0){
+        if(!confirmValue || confirmValue > 99 || confirmValue <= 0){
+            setConfirmed(false);
+            Alert.alert("Invalid Number", "Number has to be a number between 1 and 99", [{text: "Okay", style:"destructive", onPress: resetInputHandler}])
+            // console.log("groper");
             return;
+        }else{
+            setConfirmed(true);
+            // console.log(confirmValue);
+            setIvalue("");
+            // console.log("grope")
+            setSelectedNumber(confirmValue);
         }
-       
-        setConfirmed(true);
-        setIvalue("");
-        setSelectedNumber(confirmValue);
+           
     }
     let confirmedOutput;
     if(confirmed){
-        confirmedOutput = <Text>Selected Number: {selectedNumber}</Text>
+        confirmedOutput = (
+        <View style={styles.ahead}>
+            <Text>Selected Number:</Text>
+            <View style= {styles.number}><Text style={styles.selec}>{selectedNumber}</Text></View>
+            <Button style = {styles.button} color={colors.primary} title="Start Game"></Button>
+        </View>
+        );
     }
    
     return (
@@ -105,6 +119,35 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15
     },
     button: {
-        width: '40%'
+        width: '40%',
+       
+    },
+    ahead:{
+        flexDirection: "column",
+        justifyContent: 'space-between',
+        width: '90%',
+        marginTop: 10,
+        borderRadius: 10 ,
+        shadowColor: 'black',
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowRadius: 10,
+        shadowOpacity: .50,
+        backgroundColor: 'white',
+        elevation: 10,
+        height: 120,
+        padding: 10,
+        margin: 5
+    },
+    number:{
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: 24
+    },
+    selec: {
+        fontSize: 24
     }
 })
