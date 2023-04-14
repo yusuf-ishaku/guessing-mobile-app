@@ -5,7 +5,7 @@ import Colors from "../constants/colors";
 import Input from "../components/Input";
 import colors from "../constants/colors";
 // import { useState } from "react";
-export const StartGameScreen = () =>{
+export const StartGameScreen = (props) =>{
     const[ivalue, setIvalue] = useState("");
     const[confirmed, setConfirmed] = useState(false);
     const[selectedNumber, setSelectedNumber] = useState("");
@@ -43,7 +43,7 @@ export const StartGameScreen = () =>{
         <View style={styles.ahead}>
             <Text>Selected Number:</Text>
             <View style= {styles.number}><Text style={styles.selec}>{selectedNumber}</Text></View>
-            <Button style = {styles.button} color={colors.accent} title="Start Game"></Button>
+            <Button style = {styles.button} color={colors.accent} title="Start Game" onPress={() =>{props.onStartGame(selectedNumber)}}></Button>
         </View>
         );
     }

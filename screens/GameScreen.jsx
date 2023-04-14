@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {Button, View, Text, StyleSheet } from 'react-native'
+import { Card } from '../components/Card';
+import colors from '../constants/colors';
 
 
 const generateRandomBetween = (min, max, exclude) =>{
@@ -17,19 +19,35 @@ export const GameScreen = ( props ) =>{
     const [currentGuess, setCurrentGuess] = useState(generateRandomBetween(1, 100, props.userGuess))
 
     return(
-        <View>
-            <Text>Opponents' guess</Text>
+        <View style= {styles.screen}>
             <View style={styles.ahead}>
-                <Text>Selected Number:</Text>
-                <View style={styles.number}><Text style={styles.selec}>{selectedNumber}</Text></View>
-                <Button style={styles.button} color={colors.accent} title="Start Game"></Button>
+                <Text>Opponents' guess</Text>
+                <View style={styles.number}><Text style={styles.selec}>{currentGuess}</Text></View>
+                
             </View>
+            <Card style={styles.buttons}>
+                <Button title="LOWER" onPress={() =>{}}></Button>
+                <Button title='GREATER' onPress={() =>{}}></Button>
+            </Card>
         </View>
         
     )
 };
 
 const styles = StyleSheet.create({
+    buttons: {
+        marginVertical: 10,
+        width: '100%',
+        height: 'auto',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 15
+    },
+    screen: {
+        flex: 1,
+        padding: 5,
+        alignItems: 'center'
+    },
     button: {
         width: '40%',
        
@@ -49,7 +67,7 @@ const styles = StyleSheet.create({
         shadowOpacity: .50,
         backgroundColor: 'white',
         elevation: 10,
-        height: 120,
+        height: 80,
         padding: 10,
         margin: 5
     },
